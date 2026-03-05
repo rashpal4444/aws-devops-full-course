@@ -1,0 +1,77 @@
+<!-- what is devops -->
+
+DevOps means development and operations working together.
+It is a practice that helps teams deliver software faster and more reliably.
+
+In traditional development, developers write code and the operations team deploys it later. Because these teams worked separately, many problems happened during deployment.
+
+DevOps focuses on collaboration, automation, and continuous improvement.
+
+2.MAIN GOALS OF DEVOPS-
+
+improve collaboration between development and operations teams.
+
+automate the software delivery process.
+
+release applications faster.
+
+reduce human errors.
+
+improve system reliability.
+
+devops lifecycle.
+
+3. DEVOPS WORKFLOW CONSIST OF THESE THINGS-
+
+planning
+
+development
+
+build
+
+testing
+
+release
+
+deployment
+
+monitoring
+
+These stages repeat continuously during the application lifecycle.
+
+4. TOOLS USED IN DEVOPS-
+
+Some common tools used in devops are:
+
+Git for version control
+
+Jenkins for CI/CD automation
+
+Docker for containerization
+
+Kubernetes for container orchestration
+
+Terraform for infrastructure as code
+
+Ansible for configuration management
+
+Prometheus and Grafana for monitoring
+
+5. BASIC DEVOPS CONCEPTS-
+
+CONTINUOUS INTIGRATION (CI)
+Developers frequently push code to a shared repository and automated builds and tests are triggered.
+
+CONTINUOUS DEPLOYMENT (CD)
+Code changes are automatically prepared for deployment after passing tests.
+
+what I learned today
+
+devops is not just tools, it is also a culture
+
+automation is a very important part of devops
+
+CI/CD helps teams deliver software faster
+
+devops improves collaboration between teams
+

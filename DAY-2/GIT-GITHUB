@@ -1,0 +1,84 @@
+GIT INTRODUCTION
+
+Git is a distributed version control system used to track changes in code.
+It helps developers collaborate on projects and maintain different versions of the code.
+
+Git allows developers to work on the same project without overwriting each other’s work.
+
+WHY GIT IS USED
+
+track changes in code
+
+collaborate with multiple developers
+
+maintain different versions of a project
+
+revert back to previous versions if needed
+
+GIT VS GITHUB
+
+Git is a tool used to track code changes locally.
+
+GitHub is a cloud platform used to store Git repositories and collaborate with other developers.
+
+Git works on the local machine while GitHub stores code remotely.
+
+COMMON GIT COMMANDS
+
+git init
+used to initialize a new git repository
+
+git status
+shows the current status of files in the repository
+
+git add
+adds files to the staging area
+
+example
+git add file.txt
+
+git commit
+saves the changes with a message
+
+example
+git commit -m "initial commit"
+
+git log
+shows the history of commits
+
+STAGES IN GIT
+
+working directory
+files are created or modified here
+
+staging area
+files are added here before committing
+
+repository
+committed files are stored permanently here
+
+CONNECTING LOCAL REPO TO GITHUB
+
+first create a repository on GitHub.
+
+Then run the following commands:
+
+git remote add origin repository_url
+
+git branch -M main
+
+git push -u origin main
+
+This pushes the local code to GitHub.
+
+WHAT I PRACTICED TODAY
+
+installed git
+
+created a local repository
+
+added files using git add
+
+committed changes using git commit
+
+pushed code to github

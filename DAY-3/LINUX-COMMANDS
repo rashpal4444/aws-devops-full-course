@@ -1,0 +1,155 @@
+Introduction to Linux
+
+Linux is an open-source operating system based on Unix. Linux is widely used in servers, cloud computing, DevOps environments, and embedded systems.
+
+Linux allows users to interact with the system through a command line interface (CLI) or a graphical user interface (GUI). In DevOps, most work is done using the command line because it is faster and more powerful.
+
+Many popular distributions of Linux exist such as Ubuntu, CentOS, Red Hat Enterprise Linux, and Debian.
+
+Linux is the most commonly used operating system for servers and cloud platforms like Amazon Web Services, Google Cloud, and Microsoft Azure.
+
+Benefits of Linux
+
+Open Source
+Linux is free to use and its source code is available to everyone. Developers can modify and customize it according to their needs.
+
+High Security
+Linux is considered more secure than many other operating systems because of strong permission systems and frequent updates.
+
+Stability and Performance
+Linux systems can run for a long time without restarting. That is why most servers use Linux.
+
+Used in DevOps and Cloud
+Most DevOps tools like Docker, Kubernetes, Ansible, and Jenkins run mainly on Linux.
+
+Lightweight
+Linux can run even on low hardware systems because it uses fewer resources.
+
+Large Community Support
+Linux has a very large community. If any problem occurs, solutions are usually available online.
+
+User Management Commands
+
+Create a new user
+sudo adduser username
+
+Example
+sudo adduser devops
+
+Delete a user
+sudo deluser username
+
+Change password of a user
+sudo passwd username
+
+Switch to another user
+su username
+
+File Permissions
+
+In Linux every file has permissions for owner, group and others.
+
+To check file permissions
+ls -l
+
+Example output
+-rw-r--r-- 1 ubuntu ubuntu file.txt
+
+Meaning of permissions
+
+r = read
+w = write
+x = execute
+
+Change File Permission
+
+Command used
+chmod permission filename
+
+Example
+chmod 777 file.txt
+
+Meaning of numbers
+
+7 = read + write + execute
+6 = read + write
+5 = read + execute
+4 = read
+
+Example for ssh key
+
+chmod 400 key.pem
+
+Change File Ownership
+
+Command
+chown user:group filename
+
+Example
+
+sudo chown ubuntu:ubuntu file.txt
+
+Process Management
+
+Process means a running program in the system.
+
+Check running processes
+ps
+
+Detailed process list
+ps aux
+
+Live monitoring of processes
+top
+
+Kill a process
+kill processID
+
+Example
+kill 1234
+
+Force kill a process
+kill -9 1234
+
+Disk Usage Commands
+
+Check disk space
+df -h
+
+Check size of folder
+du -sh foldername
+
+Example
+du -sh /home
+
+Network Commands
+
+Check IP address
+ip a
+
+Test internet connection
+ping google.com
+
+Check open ports
+netstat -tulnp
+
+Package Management (Ubuntu)
+
+Update packages
+sudo apt update
+
+Upgrade packages
+sudo apt upgrade
+
+Install a package
+sudo apt install nginx
+
+Remove a package
+sudo apt remove nginx
+
+Search inside files
+
+grep "word" filename
+
+Example
+grep "error" logs.txt

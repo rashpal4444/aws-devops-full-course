@@ -1,0 +1,233 @@
+AWS notes (DevOps)
+
+AWS stands for Amazon Web Services.
+It is a cloud platform where we can create servers, storage, networks and other infrastructure through the internet instead of buying physical hardware.
+
+Main advantages:
+
+no need to buy servers
+
+pay only for what you use
+
+easy to scale infrastructure
+
+highly available
+
+Regions and Availability Zones
+
+A region is a physical location where AWS has its data centers.
+
+Examples:
+
+us-east-1
+
+ap-south-1 (Mumbai)
+
+Each region has multiple availability zones (AZ).
+Availability zones are separate data centers used for high availability.
+
+Example structure:
+
+Region
+→ AZ1
+→ AZ2
+→ AZ3
+
+If one AZ fails, applications can run in another AZ.
+
+EC2
+
+Amazon EC2 is used to create virtual machines (servers) in AWS.
+
+Uses:
+
+hosting applications
+
+running DevOps tools
+
+testing environments
+
+web servers
+
+Important things in EC2
+
+Instance
+A virtual server running in AWS.
+
+Instance types
+Different hardware sizes.
+
+Examples:
+t2.micro
+t3.medium
+m5.large
+
+Key pair
+Used for secure login to EC2.
+
+Example command:
+
+ssh -i key.pem ubuntu@server-ip
+
+Security Groups
+
+Security groups act like a firewall for EC2 instances.
+
+They control inbound and outbound traffic.
+
+Common rules:
+
+Port 22 → SSH access
+Port 80 → HTTP (web traffic)
+Port 443 → HTTPS
+
+Example:
+
+Inbound rules
+SSH (22) → my IP
+HTTP (80) → anywhere
+
+S3
+
+Amazon S3 is a storage service used to store files.
+
+It stores data in buckets.
+
+Example structure:
+
+Bucket
+→ images
+→ backups
+→ logs
+
+Uses:
+
+backup storage
+
+static website hosting
+
+storing logs
+
+storing application data
+
+IAM
+
+AWS Identity and Access Management is used to manage permissions in AWS.
+
+It controls who can access AWS resources.
+
+Main components:
+
+User
+A person who can log in to AWS.
+
+Group
+Collection of users.
+
+Policy
+Permissions that allow or deny actions.
+
+Example:
+Allow EC2 access
+Allow S3 read only
+
+VPC
+
+Amazon Virtual Private Cloud allows us to create a private network in AWS.
+
+Inside a VPC we configure:
+
+subnets
+route tables
+internet gateway
+security groups
+
+Example architecture:
+
+VPC
+→ public subnet (web server)
+→ private subnet (database)
+
+Public subnet has internet access.
+Private subnet does not have direct internet access.
+
+Load Balancer
+
+Elastic Load Balancing distributes traffic across multiple servers.
+
+Example:
+
+Users
+↓
+Load balancer
+↓
+Server1
+Server2
+Server3
+
+Benefits:
+
+high availability
+
+better performance
+
+prevents server overload
+
+Auto Scaling
+
+AWS Auto Scaling automatically increases or decreases the number of servers based on traffic.
+
+Example:
+
+Low traffic → 2 servers
+High traffic → 10 servers
+
+Benefits:
+
+saves cost
+
+automatic scaling
+
+improves reliability
+
+CloudWatch
+
+Amazon CloudWatch is used for monitoring AWS resources.
+
+It tracks things like:
+
+CPU usage
+memory
+disk
+network traffic
+
+Example alert:
+
+If CPU > 80%
+send notification
+
+Route 53
+
+Amazon Route 53 is a DNS service.
+
+It connects a domain name to an IP address.
+
+Example:
+
+mywebsite.com
+↓
+EC2 server
+
+Simple DevOps architecture example
+
+User
+↓
+Route53
+↓
+Load Balancer
+↓
+EC2 servers
+↓
+S3 storage
+↓
+CloudWatch monitoring

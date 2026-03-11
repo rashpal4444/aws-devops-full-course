@@ -1,0 +1,197 @@
+ANSIBLE
+
+What is Ansible
+
+Ansible is an automation tool used to manage and configure multiple servers from a single machine.
+
+It is mainly used for
+
+configuration management
+
+application deployment
+
+server automation
+
+Example
+If we want to install nginx on 10 servers, we do not need to login to each server manually. Ansible can install it on all servers with one command.
+
+Why Ansible is used
+
+agentless tool (no software needed on servers)
+
+easy to learn
+
+uses ssh for connection
+
+saves time by automating repetitive tasks
+
+manages many servers at the same time
+
+How Ansible works
+
+There are four main components
+
+Control Node
+The machine where Ansible is installed.
+
+Managed Nodes
+The servers that Ansible controls.
+
+Inventory
+A file that contains the IP addresses of servers.
+
+Playbook
+A file that contains automation tasks written in YAML.
+
+Flow
+
+Control Node → SSH → Managed Servers
+
+Playbook
+
+A playbook is a YAML file that contains tasks which Ansible runs on servers.
+
+Examples of tasks
+
+installing software
+
+starting services
+
+creating files
+
+copying files
+
+updating servers
+
+YAML basics
+
+Ansible playbooks are written in YAML.
+
+Rules
+
+indentation is very important
+
+always use spaces not tabs
+
+format is key : value
+
+Example
+
+name: install nginx
+hosts: web
+become: yes
+
+Basic playbook structure
+
+name: install nginx on server
+hosts: web
+become: yes
+
+tasks:
+
+name: install nginx
+apt:
+name: nginx
+state: present
+
+Explanation
+
+name → description of playbook
+hosts → servers where playbook will run
+become → run command as root user
+tasks → list of tasks to execute
+
+How to run a playbook
+
+Command
+
+ansible-playbook playbook.yml
+
+Example
+
+ansible-playbook nginx.yml
+
+Example playbook to test connection
+
+name: ping servers
+hosts: all
+
+tasks:
+
+name: test connection
+ping:
+
+Install apache example
+
+name: install apache
+hosts: web
+become: yes
+
+tasks:
+
+name: install apache2
+apt:
+name: apache2
+state: present
+
+Start service example
+
+name: start apache
+hosts: web
+become: yes
+
+tasks:
+
+name: start apache service
+service:
+name: apache2
+state: started
+
+Create file example
+
+name: create file
+hosts: web
+
+tasks:
+
+name: create test file
+file:
+path: /home/ubuntu/test.txt
+state: touch
+
+Check playbook syntax
+
+ansible-playbook playbook.yml --syntax-check
+
+Dry run (test playbook without making changes)
+
+ansible-playbook playbook.yml --check
+
+Common modules in ansible
+
+ping → check connection
+apt → install packages in ubuntu
+yum → install packages in amazon linux / centos
+service → manage services
+copy → copy files to server
+file → create or delete files
+
+Copy file example
+
+name: copy file
+hosts: web
+
+tasks:
+
+name: copy index file
+copy:
+src: index.html
+dest: /var/www/html/index.html
+
+Run playbook for specific server
+
+ansible-playbook nginx.yml --limit web1
+
+Check hosts in inventory
+
+ansible all --list-hosts

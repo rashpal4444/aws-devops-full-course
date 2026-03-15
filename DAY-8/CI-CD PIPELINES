@@ -1,0 +1,42 @@
+CI-CD PIPELINES------
+
+CI/CD pipelines are an important concept in DevOps used to automate the process of building, testing, and deploying applications. The goal of CI/CD is to deliver software faster and more reliably by reducing manual work and errors. CI/CD pipelines connect development, testing, and deployment processes into one automated workflow.
+
+CI means Continuous Integration.
+CD means Continuous Delivery or Continuous Deployment.
+
+Continuous Integration is the practice where developers frequently add their code to a shared repository. Every time code is pushed to the repository, an automated process starts. The system automatically builds the application and runs tests to make sure the new code does not break the existing project. This helps developers find errors early and keeps the code stable.
+
+Continuous Delivery means that after the code passes all tests, the application is ready to be deployed to production at any time. The deployment process is automated but still requires manual approval before going live.
+
+Continuous Deployment is a more advanced stage where every change that passes all tests is automatically deployed to production without manual approval.
+
+CI/CD pipelines are needed because in modern software development many developers work on the same project at the same time. If changes are added manually, it becomes difficult to manage versions, run tests, and deploy applications. CI/CD automates these steps and ensures that the application is always tested and ready to release.
+
+A CI/CD pipeline is a sequence of automated steps that the code goes through from development to production. These steps include code integration, building the application, testing, and deploying it.
+
+The pipeline usually starts when a developer pushes code to a version control system such as Git or a repository platform like GitHub or GitLab. Once the code is pushed, a CI/CD tool automatically triggers the pipeline process.
+
+The first stage of the pipeline is Source Stage.
+In this stage developers write code and push it to the repository. The CI/CD system detects the change and starts the pipeline automatically.
+
+The second stage is Build Stage.
+In this stage the application source code is compiled and packaged into a build artifact. The build process converts source code into an executable application that can run on servers.
+
+The third stage is Test Stage.
+In this stage automated tests are executed. These tests check whether the application works correctly. Examples include unit tests, integration tests, and security tests. If any test fails, the pipeline stops and developers are notified.
+
+The fourth stage is Deploy Stage.
+After successful testing, the application is deployed to servers or cloud environments. Deployment can happen in staging environments for further testing or directly in production.
+
+CI/CD pipelines are usually managed by automation tools. Some popular CI/CD tools include Jenkins, GitHub Actions, GitLab CI/CD, and CircleCI. These tools allow teams to define pipelines using configuration files and automate the entire workflow.
+
+In a DevOps environment, CI/CD pipelines are often connected with container and cloud technologies. For example, applications may be built into containers using Docker and then deployed into container orchestration platforms like Kubernetes.
+
+A simple CI/CD workflow looks like this:
+
+Developer writes code → pushes code to repository → CI system builds application → automated tests run → application is packaged → deployment process starts → application runs on servers.
+
+Important benefits of CI/CD pipelines include faster software delivery, fewer manual errors, better collaboration between teams, and improved software quality. Since testing and deployment are automated, developers can focus more on writing new features instead of managing manual processes.
+
+CI/CD pipelines are a key part of DevOps practices because they support continuous development and rapid deployment. They help organizations release updates frequently while maintaining stability and reliability of applications.

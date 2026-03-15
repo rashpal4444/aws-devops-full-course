@@ -1,0 +1,193 @@
+ANSIBLE PLAYBOOK--------------
+
+Ansible Playbook is a YAML file that contains a list of tasks which will run automatically on remote servers.
+It is used to automate configuration and management of multiple servers.
+
+In simple words:
+Playbook = file that contains automation instructions
+
+Playbooks usually have the extension .yml or .yaml
+
+Example
+
+playbook.yml
+Why we use Playbooks
+
+Reduce manual work
+
+Run the same task on multiple servers
+
+Easy automation
+
+Faster server configuration
+
+Useful for DevOps automation
+
+Example:
+If you want to install nginx on 20 servers, you can do it with one playbook command.
+
+Basic Structure of an Ansible Playbook
+
+A playbook mainly contains these parts:
+
+Hosts
+
+Tasks
+
+Modules
+
+Variables
+
+Handlers
+
+1. Hosts
+
+Hosts define which servers the playbook will run on.
+
+Example
+
+hosts: webservers
+
+or
+
+hosts: all
+
+all means the playbook will run on all servers in the inventory.
+
+2. Tasks
+
+Tasks are the actions that Ansible performs on servers.
+
+Examples of tasks:
+
+install packages
+
+start services
+
+copy files
+
+create users
+
+Example task
+
+tasks:
+  - name: install nginx
+    apt:
+      name: nginx
+      state: present
+
+This task installs nginx.
+
+3. Modules
+
+Modules are pre-built tools in Ansible used to perform specific tasks.
+
+Examples
+
+apt → install packages on Ubuntu/Debian
+
+yum → install packages on RedHat
+
+service → start or stop services
+
+copy → copy files to servers
+
+file → manage file permissions
+
+Example
+
+apt:
+  name: nginx
+  state: present
+4. Variables
+
+Variables store values that can be used multiple times in a playbook.
+
+Example
+
+vars:
+  package_name: nginx
+
+Using variable in task
+
+apt:
+  name: "{{ package_name }}"
+  state: present
+
+Variables make playbooks more flexible and reusable.
+
+5. Handlers
+
+Handlers are special tasks that run only when a change happens.
+
+They are mostly used to restart services.
+
+Example
+
+handlers:
+  - name: restart nginx
+    service:
+      name: nginx
+      state: restarted
+Basic Playbook Example
+---
+- name: install nginx on servers
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: install nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: start nginx service
+      service:
+        name: nginx
+        state: started
+
+Explanation
+
+hosts → servers where playbook will run
+become → use sudo privileges
+tasks → list of actions to perform
+
+How to Run a Playbook
+
+Command
+
+ansible-playbook playbook.yml
+
+Example
+
+ansible-playbook nginx.yml
+
+This command will execute the playbook on all target servers.
+
+Important Points
+
+Playbooks are written in YAML format
+
+Indentation (spaces) is very important
+
+Playbooks use modules to perform tasks
+
+A playbook can contain multiple tasks
+
+Used for automation and configuration management
+
+Simple Real Example
+
+Suppose you want to:
+
+Install nginx
+
+Start nginx service
+
+Copy configuration file
+
+on many servers.
+
+Instead of doing it manually on each server, you can create one playbook and run one command.
+
+Ansible will automatically complete all tasks on all servers.

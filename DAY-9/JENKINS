@@ -1,0 +1,178 @@
+Jenkins is an open-source automation tool used in DevOps. It helps developers automatically build, test, and deploy applications. Jenkins mainly works for automation in the software development process so that manual work becomes less and work becomes faster and more reliable.
+
+Jenkins is mostly used to implement CI/CD pipelines. It connects different tools like Git, Docker, Maven, Terraform, and cloud platforms to automate the workflow.
+
+CI means Continuous Integration. It means developers continuously add their code to a shared repository like GitHub. Jenkins automatically checks that code and builds it.
+
+CD means Continuous Delivery or Continuous Deployment. After building and testing the code, Jenkins can automatically deploy the application to servers.
+
+Jenkins works on a server. Developers push code to a repository such as GitHub or Git and Jenkins detects the changes and starts the automation process.
+
+Jenkins architecture
+
+Jenkins mainly works with two components.
+
+Master (Controller)
+Agent (Node)
+
+The master is the main Jenkins server. It manages jobs, schedules builds, and controls the whole automation process.
+
+Agents are machines that perform the actual tasks such as building code, testing applications, or deploying software. Jenkins can use multiple agents to run jobs faster.
+
+Why we need Jenkins
+
+Manual build and deployment take a lot of time and can cause mistakes. Jenkins automates these processes.
+
+Benefits of Jenkins
+
+Automation of build and deployment
+Faster software delivery
+Early detection of bugs
+Integration with many DevOps tools
+Easy to scale with multiple agents
+
+Important Jenkins concepts
+
+Job
+
+A job is a task Jenkins performs. For example building code, running tests, or deploying an application.
+
+Build
+
+Build means compiling the source code and creating a runnable version of the application.
+
+Pipeline
+
+A pipeline is a sequence of steps that defines the entire CI/CD process. For example build → test → package → deploy.
+
+Plugins
+
+Jenkins uses plugins to integrate with other tools. Jenkins has thousands of plugins.
+
+Example plugins
+
+Git plugin for code integration
+Docker plugin for container builds
+Maven plugin for Java builds
+Kubernetes plugin for container orchestration
+
+Types of Jenkins jobs
+
+Freestyle project
+
+This is the simplest Jenkins job. It allows you to configure tasks using the Jenkins UI.
+
+Pipeline project
+
+This is the most common in DevOps. It defines the CI/CD pipeline using code.
+
+Multibranch pipeline
+
+This automatically creates pipelines for different branches in Git repositories.
+
+Jenkins pipeline
+
+A pipeline describes the automation steps in code using a file called Jenkinsfile.
+
+The Jenkinsfile is usually stored in the same Git repository as the application code.
+
+Two types of pipelines
+
+Declarative pipeline
+Scripted pipeline
+
+Declarative pipeline is simpler and more structured. Scripted pipeline is more flexible but more complex.
+
+Stages in a Jenkins pipeline
+
+A pipeline is divided into stages.
+
+Common stages
+
+Build
+Test
+Package
+Deploy
+
+Example flow
+
+Developer pushes code to GitHub
+Jenkins detects the change
+Jenkins pulls the code
+Jenkins builds the project
+Jenkins runs tests
+Jenkins deploys the application
+
+Triggers in Jenkins
+
+Triggers decide when Jenkins should start a job.
+
+Common triggers
+
+Git webhook when code is pushed
+Scheduled builds using cron
+Manual trigger by user
+
+Jenkins installation (basic idea)
+
+Jenkins can run on
+
+Linux server
+Mac system
+Windows server
+Docker container
+
+Basic installation steps
+
+Install Java (because Jenkins runs on Java)
+Download Jenkins package
+Install Jenkins
+Start Jenkins service
+Open Jenkins in browser on port 8080
+
+Example
+
+http://localhost:8080
+
+Security in Jenkins
+
+Jenkins supports authentication and authorization.
+
+Security features include
+
+User accounts
+Role based access control
+Credential management for passwords, tokens, and SSH keys
+
+Jenkins and DevOps tools integration
+
+Jenkins works with many DevOps tools such as
+
+Docker for building containers
+Kubernetes for deploying containers
+Terraform for infrastructure automation
+Ansible for server configuration
+
+Example DevOps workflow using Jenkins
+
+Developer writes code
+Code pushed to GitHub
+Jenkins pulls code
+Jenkins builds the application
+Tests are executed
+Docker image is created
+Application deployed to server or Kubernetes cluster
+
+Advantages of Jenkins
+
+Open source and free
+Large plugin ecosystem
+Supports many programming languages
+Easy integration with DevOps tools
+Highly customizable
+
+Disadvantages of Jenkins
+
+Initial setup can be complex
+Managing many plugins can be difficult
+UI is not very modern compared to new CI tools

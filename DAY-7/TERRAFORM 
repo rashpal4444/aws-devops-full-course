@@ -1,107 +1,153 @@
-Terraform is an Infrastructure as Code (IaC) tool used to create, manage, and update infrastructure automatically using code. Instead of manually creating resources like servers, networks, or storage from the cloud console, Terraform allows us to define everything in a configuration file. When we run Terraform commands, it reads the code and creates the infrastructure automatically. Terraform is developed by HashiCorp and it supports many cloud platforms like Amazon Web Services, Microsoft Azure, and Google Cloud Platform.
+what is terraform
+terraform is a tool used to create and manage infrastructure using code
+instead of creating resources manually on cloud we write code and terraform creates it
 
-Terraform helps DevOps engineers manage infrastructure in a simple and automated way. It reduces manual work, keeps infrastructure consistent, and allows teams to track infrastructure changes through version control systems like Git. Another benefit is that infrastructure can be recreated anytime using the same code, which makes deployments faster and more reliable.
+created by HashiCorp
 
-Terraform is needed because managing cloud resources manually becomes difficult when there are many servers, databases, networks, and storage services. With Terraform, all infrastructure is written as code, which means it can be reused, shared with teams, and easily modified. It also provides automation, which is very important in DevOps workflows.
+why we use terraform
+automation no manual work
+fast deployment
+reusable code
+version control with github
+works with multiple cloud providers
 
-Terraform uses a language called HCL (HashiCorp Configuration Language). HCL is a simple and human-readable language used to describe infrastructure. It looks similar to JSON but is easier to read and write. Terraform configuration files usually have the extension .tf.
+what is infrastructure as code
+writing infrastructure in code form
+example instead of creating ec2 manually we write code and terraform creates it
 
-Example of a simple Terraform configuration file:
+how terraform works
 
-resource "aws_instance" "example" {
-  ami           = "ami-123456"
-  instance_type = "t2.micro"
-}
+1 write code
+2 terraform init
+3 terraform plan
+4 terraform apply
 
-In Terraform configuration files, everything is written inside blocks. A block is a container that defines a specific infrastructure component or configuration. Blocks organize the Terraform code and tell Terraform what needs to be created.
-
-Example of a block:
-
-resource "aws_instance" "example" {
-}
-
-Here resource is the block type, "aws_instance" is the resource type, and "example" is the name of that resource.
-
-Inside blocks we define parameters and arguments. These are used to configure how the resource should behave.
-
-A parameter is the name of a setting or configuration option that Terraform supports.
-An argument is the value given to that parameter.
-
-Example:
-
-instance_type = "t2.micro"
-
-Here:
-
-parameter → instance_type
-argument → "t2.micro"
-
-This means we are telling Terraform that the EC2 instance type should be t2.micro.
-
-Before using Terraform, we must install it on our system. Terraform can be installed on Linux servers like Ubuntu.
-
-Steps to install Terraform on Ubuntu:
-
-wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-sudo apt update
-sudo apt install terraform
-
-After installation we can verify Terraform by running:
-
-terraform -version
-
-If Terraform is installed correctly, it will show the installed version.
-
-To use Terraform with AWS, we must configure the AWS provider. The provider allows Terraform to communicate with AWS services and create resources.
-
-Example provider configuration:
-
-provider "aws" {
-  region = "us-east-1"
-}
-
-This tells Terraform to create resources in the AWS region us-east-1.
-
-Terraform can also create storage services like an S3 bucket in AWS. An S3 bucket is used to store files, backups, logs, and application data in the cloud.
-
-Example Terraform code to create an S3 bucket:
-
-resource "aws_s3_bucket" "mybucket" {
-  bucket = "my-terraform-demo-bucket"
-}
-
-Explanation:
-
-resource defines the infrastructure component.
-aws_s3_bucket is the resource type used to create an S3 bucket.
-mybucket is the name of the resource inside Terraform.
-bucket is the parameter, and "my-terraform-demo-bucket" is the argument.
-
-To run Terraform and create resources we use a few important commands.
-
-First command:
+terraform commands
 
 terraform init
-
-This command initializes the Terraform project and downloads required providers.
-
-Second command:
+initialize project download plugins
 
 terraform plan
-
-This command shows what Terraform will create or change before actually applying it.
-
-Third command:
+shows what will be created
 
 terraform apply
-
-This command creates the infrastructure defined in the Terraform configuration file.
-
-If we want to delete the infrastructure created by Terraform, we use:
+creates resources
 
 terraform destroy
+deletes resources
 
-This command removes all resources that were created using Terraform.
+what is provider
 
-Terraform is widely used in DevOps because it allows teams to manage infrastructure using code. It improves automation, reduces manual errors, and makes cloud infrastructure easier to manage. With Terraform, the same configuration can be used to create identical environments for development, testing, and production. This makes deployments consistent and reliable.
+provider means cloud service
+
+example
+
+provider "aws" {
+region = "ap-south-1"
+}
+
+tells terraform to use aws and region
+
+what is resource
+
+resource means actual service we create
+
+example
+
+resource "aws_instance" "my_ec2" {
+ami = "ami-xxxx"
+instance_type = "t2.micro"
+}
+
+this creates ec2 instance
+
+basic structure
+
+provider define cloud
+resource create service
+
+what is state file
+
+terraform.tfstate
+
+stores
+what resources created
+their ids
+
+very important file
+
+problem with local state
+
+stored in laptop
+not safe
+team cannot use
+can be lost
+
+what is backend
+
+backend is place where terraform stores state file
+
+s3 backend
+
+stores state in cloud
+
+example
+
+terraform {
+backend "s3" {
+bucket = "my-bucket"
+key = "dev/terraform.tfstate"
+region = "ap-south-1"
+}
+}
+
+what is dynamodb
+
+used for locking
+
+prevents multiple users running terraform at same time
+
+backend with dynamodb
+
+terraform → s3 store state
+terraform → dynamodb lock
+
+what is variable
+
+used to make code dynamic
+
+example
+
+variable "instance_type" {}
+
+use
+
+instance_type = var.instance_type
+
+what is output
+
+used to display result
+
+example
+
+output "ip" {
+value = aws_instance.my_ec2.public_ip
+}
+
+what is module
+
+module means reusable code
+
+example ec2 module s3 module
+
+used in big projects
+
+what is .gitignore
+
+used to ignore unwanted files
+
+example
+
+.terraform/
+terraform.tfstate
+*.tfvars

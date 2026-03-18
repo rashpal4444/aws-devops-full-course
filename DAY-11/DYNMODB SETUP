@@ -1,0 +1,159 @@
+terraform from start to backend setup (my notes)
+
+i started by installing terraform and aws cli on my mac
+terraform is used to create infrastructure using code
+aws cli is used to connect my local system with aws account
+
+first i checked aws cli using command
+aws --version
+
+then i connected aws using
+aws configure
+
+i entered:
+
+access key
+
+secret key
+
+region ap-south-1
+
+output json
+
+this step connects my system to aws
+
+after that i created a folder
+mkdir terraform-new
+cd terraform-new
+
+then i created a file
+vim terraform.tf
+
+inside this file i wrote provider block
+
+provider "aws" {
+region = "ap-south-1"
+}
+
+this tells terraform which cloud and region to use
+
+then i created my first resource (ec2 instance)
+
+resource "aws_instance" "my_ec2" {
+ami = "ami-xxxxxxxx"
+instance_type = "t2.micro"
+}
+
+then i ran
+
+terraform init
+
+this downloads required plugins and prepares terraform
+
+then i ran
+
+terraform plan
+
+this shows what terraform will create
+
+then
+
+terraform apply
+
+this actually created ec2 instance on aws
+
+after that i created s3 bucket using terraform
+
+resource "aws_s3_bucket" "my_bucket" {
+bucket = "rashpal-terraform-bucket-12345"
+}
+
+i applied again and bucket was created
+
+problem i faced
+when bucket already existed terraform showed error
+so i used
+
+terraform import aws_s3_bucket.my_bucket rashpal-terraform-bucket-12345
+
+this command connects existing resource with terraform
+
+then i learned about state file
+
+terraform creates a file called terraform.tfstate
+this file stores all infrastructure details
+
+problem:
+if this file is local → not safe for team use
+
+solution:
+use remote backend
+
+for remote backend i used s3 + dynamodb
+
+s3 is used to store state file
+dynamodb is used for locking
+
+locking means:
+only one person can run terraform at a time
+
+i already had s3 bucket so i used that
+
+then i created dynamodb table
+
+resource "aws_dynamodb_table" "tf_lock" {
+name = "terraform-lock"
+billing_mode = "PAY_PER_REQUEST"
+hash_key = "LockID"
+
+attribute {
+name = "LockID"
+type = "S"
+}
+}
+
+then applied it
+
+after that i added backend block
+
+terraform {
+backend "s3" {
+bucket = "rashpal-terraform-bucket-12345"
+key = "dev/terraform.tfstate"
+region = "ap-south-1"
+dynamodb_table = "terraform-lock"
+}
+}
+
+this tells terraform:
+store state in s3
+use dynamodb for locking
+
+then i ran
+
+terraform init
+
+it asked to copy state → i typed yes
+
+now my state moved from local to s3
+
+verification
+
+i checked s3 bucket
+i saw terraform.tfstate file
+
+i checked dynamodb table
+it was empty normally
+
+when i run terraform apply
+a lock item appears and disappears
+
+final understanding
+
+terraform → creates infrastructure
+aws cli → connects local system to aws
+provider → defines cloud
+resource → defines what to create
+state file → stores infra data
+s3 → stores state remotely
+dynamodb → locks state

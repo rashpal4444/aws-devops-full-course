@@ -1,0 +1,235 @@
+what is ci-cd
+
+ci = continuous integration
+cd = continuous delivery / continuous deployment
+
+ci-cd is a devops practice where code is automatically built, tested, and deployed whenever changes are made.
+
+simple flow:
+
+code → build → test → deploy
+
+goal:
+
+faster delivery
+
+fewer bugs
+
+less manual work
+
+why ci-cd is needed
+
+before ci-cd:
+
+manual testing
+
+manual deployment
+
+high chances of errors
+
+slow releases
+
+after ci-cd:
+
+everything automated
+
+fast and reliable releases
+
+easy to detect bugs early
+
+continuous integration (ci)
+
+continuous integration means:
+developers frequently push code to a shared repository and every change is automatically tested.
+
+process:
+
+developer writes code
+
+pushes to git
+
+pipeline runs automatically
+
+build + test happens
+
+benefits:
+
+early bug detection
+
+better code quality
+
+no integration issues
+
+continuous delivery (cd)
+
+continuous delivery means:
+after successful testing, code is ready to be deployed automatically.
+
+deployment may still require manual approval.
+
+continuous deployment
+
+continuous deployment means:
+code is automatically deployed to production without manual approval.
+
+difference:
+
+delivery → manual approval before deploy
+
+deployment → fully automatic
+
+stages in ci-cd pipeline
+
+a pipeline is divided into stages:
+
+source stage
+
+code stored in git (github, gitlab)
+
+build stage
+
+install dependencies
+
+compile code
+
+test stage
+
+run unit tests
+
+run integration tests
+
+deploy stage
+
+deploy app to server or cloud
+
+pipeline workflow (end-to-end)
+
+developer → git push →
+ci pipeline starts →
+build →
+test →
+cd pipeline →
+deploy →
+application live
+
+tools used in ci-cd
+
+popular tools:
+
+Jenkins
+
+GitHub Actions
+
+GitLab CI/CD
+
+container and deployment:
+
+docker
+
+kubernetes
+
+infrastructure:
+
+Terraform
+
+how terraform fits in ci-cd
+
+terraform is used to create infrastructure before deployment.
+
+flow:
+
+pipeline runs
+
+terraform creates servers (ec2, vpc, etc.)
+
+application is deployed on created infrastructure
+
+important concepts
+
+pipeline
+
+a sequence of automated steps
+
+stage
+
+a group of tasks (build, test, deploy)
+
+job
+
+a single task inside a stage
+
+trigger
+
+event that starts pipeline (push, pull request)
+
+artifact
+
+output of build (jar file, docker image)
+
+example of simple pipeline
+
+steps:
+
+push code to github
+
+pipeline triggers
+
+build docker image
+
+run tests
+
+deploy to server
+
+advantages of ci-cd
+
+faster development
+
+automatic testing
+
+fewer production bugs
+
+easy rollback
+
+better team collaboration
+
+real world ci-cd flow
+
+code push →
+build →
+test →
+security scan →
+docker build →
+push to registry →
+terraform infra →
+deploy →
+monitoring
+
+best practices
+
+keep pipeline fast
+
+write proper tests
+
+use version control
+
+store secrets securely
+
+use small deployments
+
+interview points (important)
+
+what is ci-cd
+ci-cd is a process that automates code integration, testing, and deployment.
+
+difference between ci and cd
+ci = integration and testing
+cd = deployment process
+
+what is pipeline
+a sequence of automated steps to deliver software
+
+simple understanding
+
+ci-cd is like a machine:
+
+you put code in → it tests → builds → deploys automatically
